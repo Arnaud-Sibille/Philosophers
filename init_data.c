@@ -1,8 +1,7 @@
 #include "philo.h"
 
-void	ft_init_struct(t_philo *data, int argc, char **argv)
+void	ft_init_data(t_data *data, int argc, char **argv)
 {
-	data->name = 0;
 	data->nb_p = ft_atoi(argv[1]);
 	data->t_die = ft_atoi(argv[2]);
 	data->t_eat = ft_atoi(argv[3]);
@@ -11,6 +10,6 @@ void	ft_init_struct(t_philo *data, int argc, char **argv)
 		data->nb_eat = ft_atoi(argv[5]);
 	else
 		data->nb_eat = -1;
-	data->forks = malloc(sizeof(char) * data->nb_p);
-	memset(data->forks, 1,data->nb_p);
+	data->th = malloc(sizeof(pthread_t) * data->nb_p);
+	data->eat_lock = malloc(sizeof(pthread_mutex_t) * data->nb_p);
 }
