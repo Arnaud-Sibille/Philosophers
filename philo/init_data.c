@@ -11,5 +11,7 @@ void	ft_init_data(t_data *data, int argc, char **argv)
 	else
 		data->nb_eat = -1;
 	data->th = malloc(sizeof(pthread_t) * data->nb_p);
+	pthread_mutex_init(&(data->print_lock), NULL);
+	pthread_mutex_init(&(data->start_lock), NULL);
 	data->eat_lock = malloc(sizeof(pthread_mutex_t) * data->nb_p);
 }

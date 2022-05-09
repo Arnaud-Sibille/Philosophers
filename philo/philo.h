@@ -48,6 +48,9 @@ int		p_ind(int name, int nb_p);
 //sleep
 void	ft_sleep(size_t time);
 
+//end
+void	ft_end(t_data *data, t_philo *ph);
+
 //utils
 int		ft_atoi(const char *s);
 
