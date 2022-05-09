@@ -6,7 +6,7 @@
 /*   By: asibille <asibille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 17:27:01 by asibille          #+#    #+#             */
-/*   Updated: 2022/04/07 16:59:44 by asibille         ###   ########.fr       */
+/*   Updated: 2022/05/09 21:23:17 by asibille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int	ft_atoi(const char *s)
 		val = val * 10 + *s - '0';
 		++s;
 		if (ft_check_undef(s, val, count, sign) == -1)
-			return (-1);
+			return (0);
 		else if (ft_check_undef(s, val, count, sign) == 0)
 			return (0);
 	}

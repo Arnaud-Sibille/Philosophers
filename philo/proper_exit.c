@@ -6,7 +6,7 @@
 /*   By: asibille <asibille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 18:18:54 by asibille          #+#    #+#             */
-/*   Updated: 2022/05/09 19:07:48 by asibille         ###   ########.fr       */
+/*   Updated: 2022/05/09 21:51:47 by asibille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@ void	ft_proper_exit(t_data *data, t_philo *ph)
 {
 	int	i;
 
+	i = -1;
+	while (++i < data->nb_p)
+		pthread_join(*(data->th + i), NULL);
 	free(data->th);
 	free(ph);
 	pthread_mutex_destroy(&(data->start_lock));

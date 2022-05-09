@@ -6,7 +6,7 @@
 /*   By: asibille <asibille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 18:14:52 by asibille          #+#    #+#             */
-/*   Updated: 2022/05/09 18:53:49 by asibille         ###   ########.fr       */
+/*   Updated: 2022/05/09 21:45:00 by asibille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ typedef struct s_data
 	pthread_mutex_t	print_lock;
 	pthread_mutex_t	start_lock;
 	pthread_mutex_t	*eat_lock;
+	int				end;
 }				t_data;
 
 typedef struct s_philo
@@ -52,7 +53,7 @@ size_t	ft_cur_time(struct timeval t0);
 void	*a_philo(void *phi);
 
 //print
-void	ft_print(pthread_mutex_t *pl, struct timeval t0, int philo, char *s);
+void	ft_print(pthread_mutex_t *pl, t_data *data, int philo, char *s);
 
 //next_and_prev
 int		p_ind(int name, int nb_p);
