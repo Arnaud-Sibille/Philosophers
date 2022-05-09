@@ -26,6 +26,7 @@ typedef struct s_philo
 {
 	int		name;
 	int		ate;
+	int		last_ate;
 	t_data	*data;
 }				t_philo;
 
@@ -43,6 +44,9 @@ void	ft_print(pthread_mutex_t *print_lock, struct timeval t0, int philo, char *s
 
 //next_and_prev
 int		p_ind(int name, int nb_p);
+
+//sleep
+void	ft_sleep(size_t time);
 
 //utils
 int		ft_atoi(const char *s);
