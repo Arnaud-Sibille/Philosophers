@@ -6,13 +6,13 @@
 /*   By: asibille <asibille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 18:03:17 by asibille          #+#    #+#             */
-/*   Updated: 2022/05/09 18:03:18 by asibille         ###   ########.fr       */
+/*   Updated: 2022/05/09 18:50:33 by asibille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	ft_init_data(t_data *data, int argc, char **argv)
+int	ft_init_data(t_data *data, int argc, char **argv)
 {
 	data->nb_p = ft_atoi(argv[1]);
 	data->t_die = ft_atoi(argv[2]);
@@ -23,7 +23,15 @@ void	ft_init_data(t_data *data, int argc, char **argv)
 	else
 		data->nb_eat = -1;
 	data->th = malloc(sizeof(pthread_t) * data->nb_p);
+	if (!data->th)
+		return (0);
+	data->eat_lock = malloc(sizeof(pthread_mutex_t) * data->nb_p);
+	if (!data->eat_lock)
+	{
+		free(data->th);
+		return (0);
+	}
 	pthread_mutex_init(&(data->print_lock), NULL);
 	pthread_mutex_init(&(data->start_lock), NULL);
-	data->eat_lock = malloc(sizeof(pthread_mutex_t) * data->nb_p);
+	return (1);
 }

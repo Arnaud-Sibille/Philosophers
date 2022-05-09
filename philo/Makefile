@@ -6,11 +6,11 @@
 #    By: asibille <asibille@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/09 16:48:42 by asibille          #+#    #+#              #
-#    Updated: 2022/05/09 17:34:37 by asibille         ###   ########.fr        #
+#    Updated: 2022/05/09 18:19:21 by asibille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = a_philo.c cur_time.c end.c ft_print.c init_data.c next_and_prev.c sleep.c utils/ft_atoi.c
+SRCS = a_philo.c cur_time.c end.c ft_print.c init_data.c next_and_prev.c sleep.c proper_exit.c utils/ft_atoi.c
 
 MAIN = philo.c
 

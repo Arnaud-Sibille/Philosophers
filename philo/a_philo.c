@@ -6,7 +6,7 @@
 /*   By: asibille <asibille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 18:03:03 by asibille          #+#    #+#             */
-/*   Updated: 2022/05/09 18:05:54 by asibille         ###   ########.fr       */
+/*   Updated: 2022/05/09 18:35:08 by asibille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,9 @@
 static void	ft_eat(t_philo *ph)
 {
 	pthread_mutex_lock(ph->data->eat_lock + ph->name);
+	ft_print(&(ph->data->print_lock), ph->data->t0, ph->name, "has taken a fork");
 	pthread_mutex_lock(ph->data->eat_lock + p_ind(ph->name, ph->data->nb_p));
+	ft_print(&(ph->data->print_lock), ph->data->t0, ph->name, "has taken a fork");
 	ft_print(&(ph->data->print_lock), ph->data->t0, ph->name, "is eating");
 	ph->last_ate = ft_cur_time(ph->data->t0);
 	++(ph->ate);

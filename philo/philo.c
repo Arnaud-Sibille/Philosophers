@@ -6,7 +6,7 @@
 /*   By: asibille <asibille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 18:03:25 by asibille          #+#    #+#             */
-/*   Updated: 2022/05/09 18:14:43 by asibille         ###   ########.fr       */
+/*   Updated: 2022/05/09 19:00:28 by asibille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,11 @@ int	main(int argc, char **argv)
 
 	if (argc == 5 || argc == 6)
 	{
-		ft_init_data(&data, argc, argv);
-		philo = malloc(sizeof(t_philo) * data.nb_p);
+		philo = malloc(sizeof(t_philo) * ft_atoi(argv[1]));
+		if (!philo)
+			return (1);
+		if (!ft_init_data(&data, argc, argv))
+			return (1);
 		i = 0;
 		pthread_mutex_lock(&(data.start_lock));
 		while (i < data.nb_p)
@@ -29,6 +32,7 @@ int	main(int argc, char **argv)
 			pthread_mutex_init(data.eat_lock + i, NULL);
 			(philo + i)->name = i;
 			(philo + i)->ate = 0;
+			(philo + i)->last_ate = 0;
 			(philo + i)->data = &data;
 			pthread_create(data.th + i, NULL, a_philo, philo + i);
 			++i;
@@ -36,8 +40,8 @@ int	main(int argc, char **argv)
 		gettimeofday(&(data.t0), NULL);
 		pthread_mutex_unlock(&(data.start_lock));
 		ft_end(&data, philo);
+		//ft_proper_exit(&data, philo);
 	}
 	return (0);
 }
 
-//ft_proper_exit(&data, philo); destroy mutexes and mallocs

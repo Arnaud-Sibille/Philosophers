@@ -6,7 +6,7 @@
 /*   By: asibille <asibille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 18:14:52 by asibille          #+#    #+#             */
-/*   Updated: 2022/05/09 18:15:06 by asibille         ###   ########.fr       */
+/*   Updated: 2022/05/09 18:53:49 by asibille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ typedef struct s_philo
 }				t_philo;
 
 //init_data
-void	ft_init_data(t_data *data, int argc, char **argv);
+int		ft_init_data(t_data *data, int argc, char **argv);
 
 //cur_time
 size_t	ft_cur_time(struct timeval t0);
@@ -62,6 +62,9 @@ void	ft_sleep(size_t time);
 
 //end
 int		ft_end(t_data *data, t_philo *ph);
+
+//proper_exit
+void	ft_proper_exit(t_data *data, t_philo *ph);
 
 //utils
 int		ft_atoi(const char *s);
