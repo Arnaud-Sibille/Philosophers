@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   philo.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: asibille <asibille@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/05/09 18:14:52 by asibille          #+#    #+#             */
+/*   Updated: 2022/05/09 18:15:06 by asibille         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PHILO_H
 # define PHILO_H
 
@@ -40,7 +52,7 @@ size_t	ft_cur_time(struct timeval t0);
 void	*a_philo(void *phi);
 
 //print
-void	ft_print(pthread_mutex_t *print_lock, struct timeval t0, int philo, char *s);
+void	ft_print(pthread_mutex_t *pl, struct timeval t0, int philo, char *s);
 
 //next_and_prev
 int		p_ind(int name, int nb_p);
@@ -49,7 +61,7 @@ int		p_ind(int name, int nb_p);
 void	ft_sleep(size_t time);
 
 //end
-void	ft_end(t_data *data, t_philo *ph);
+int		ft_end(t_data *data, t_philo *ph);
 
 //utils
 int		ft_atoi(const char *s);

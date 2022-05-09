@@ -1,7 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   philo.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: asibille <asibille@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/05/09 18:03:25 by asibille          #+#    #+#             */
+/*   Updated: 2022/05/09 18:14:43 by asibille         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "philo.h"
 
-
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	t_data	data;
 	t_philo	*philo;
@@ -25,7 +36,8 @@ int main(int argc, char **argv)
 		gettimeofday(&(data.t0), NULL);
 		pthread_mutex_unlock(&(data.start_lock));
 		ft_end(&data, philo);
-		//ft_proper_exit(&data, philo); destroy mutexes and mallocs
 	}
 	return (0);
 }
+
+//ft_proper_exit(&data, philo); destroy mutexes and mallocs

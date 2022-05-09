@@ -1,6 +1,30 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   end.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: asibille <asibille@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/05/09 18:03:10 by asibille          #+#    #+#             */
+/*   Updated: 2022/05/09 18:12:44 by asibille         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "philo.h"
 
-void	ft_end(t_data *data, t_philo *ph)
+static int	ft_exit(t_data *data, t_philo *ph, int i, int mode)
+{
+	if (mode == 1)
+	{
+		pthread_mutex_lock(&(data->print_lock));
+		printf("%zu %d %s\n", ft_cur_time(data->t0), (ph + i)->name + 1, "died");
+	}
+	if (mode == 2)
+		pthread_mutex_lock(&(data->print_lock));
+	return (0);
+}
+
+int	ft_end(t_data *data, t_philo *ph)
 {
 	int	count;
 	int	i;
@@ -15,17 +39,10 @@ void	ft_end(t_data *data, t_philo *ph)
 		{
 			count = 0;
 			if ((int) ft_cur_time(data->t0) - (ph + i)->last_ate > data->t_die)
-			{
-				pthread_mutex_lock(&(data->print_lock));
-				printf("%zu %d %s\n", ft_cur_time(data->t0), (ph + i)->name + 1, "died");
-				return ;
-			}
+				return (ft_exit(data, ph, i, 1));
 		}
 		if (count == data->nb_p)
-		{
-			pthread_mutex_lock(&(data->print_lock));
-			return ;
-		}
+			return (ft_exit(data, ph, i, 2));
 		i = p_ind(i, data->nb_p);
 	}
 }

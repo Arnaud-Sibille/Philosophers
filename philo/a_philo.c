@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   a_philo.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: asibille <asibille@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/05/09 18:03:03 by asibille          #+#    #+#             */
+/*   Updated: 2022/05/09 18:05:54 by asibille         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "philo.h"
 
 static void	ft_eat(t_philo *ph)
@@ -25,9 +37,11 @@ void	*a_philo(void *phi)
 	while (ph->ate != ph->data->nb_eat)
 	{
 		ft_eat(ph);
-		ft_print(&(ph->data->print_lock), ph->data->t0, ph->name, "is sleeping");
+		ft_print(&(ph->data->print_lock),
+			ph->data->t0, ph->name, "is sleeping");
 		ft_sleep(ph->data->t_sleep);
-		ft_print(&(ph->data->print_lock), ph->data->t0, ph->name, "is thinking");
+		ft_print(&(ph->data->print_lock),
+			ph->data->t0, ph->name, "is thinking");
 	}
 	return (NULL);
 }
