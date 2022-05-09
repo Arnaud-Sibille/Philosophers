@@ -6,7 +6,7 @@
 /*   By: asibille <asibille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 18:03:10 by asibille          #+#    #+#             */
-/*   Updated: 2022/05/09 18:12:44 by asibille         ###   ########.fr       */
+/*   Updated: 2022/05/09 19:33:49 by asibille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	ft_end(t_data *data, t_philo *ph)
 	count = 0;
 	while (1)
 	{
-		if ((ph + i)->ate == data->nb_eat)
+		if (data->nb_eat != -1 && (ph + i)->ate >= data->nb_eat)
 			++count;
 		else
 		{

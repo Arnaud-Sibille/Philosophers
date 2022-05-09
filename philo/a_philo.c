@@ -6,7 +6,7 @@
 /*   By: asibille <asibille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 18:03:03 by asibille          #+#    #+#             */
-/*   Updated: 2022/05/09 19:07:26 by asibille         ###   ########.fr       */
+/*   Updated: 2022/05/09 19:31:27 by asibille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	*a_philo(void *phi)
 	pthread_mutex_lock(&(ph->data->start_lock));
 	ph->last_ate = ft_cur_time(ph->data->t0);
 	pthread_mutex_unlock(&(ph->data->start_lock));
-	if (ph->name % 2 || ph->name == ph->data->nb_p)
+	if (ph->name % 2 || ph->name == ph->data->nb_p - 1)
 		ft_sleep(ph->data->t_eat / 2);
 	while (ph->ate != ph->data->nb_eat)
 	{
