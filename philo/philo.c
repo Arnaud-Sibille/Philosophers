@@ -6,7 +6,7 @@
 /*   By: asibille <asibille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 18:03:25 by asibille          #+#    #+#             */
-/*   Updated: 2022/05/09 19:11:38 by asibille         ###   ########.fr       */
+/*   Updated: 2022/05/10 12:51:29 by asibille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,12 @@ int	main(int argc, char **argv)
 	t_philo	*philo;
 	int		i;
 
-	if (argc == 5 || argc == 6)
+	if ((argc == 5 || argc == 6) && ft_atoi(argv[1]) >= 0)
 	{
 		philo = malloc(sizeof(t_philo) * ft_atoi(argv[1]));
 		if (!philo)
 			return (1);
-		if (!ft_init_data(&data, argc, argv))
+		if (!ft_init_data(&data, argc, argv, philo))
 			return (1);
 		i = 0;
 		pthread_mutex_lock(&(data.start_lock));

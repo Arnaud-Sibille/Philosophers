@@ -6,7 +6,7 @@
 /*   By: asibille <asibille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 17:27:01 by asibille          #+#    #+#             */
-/*   Updated: 2022/05/09 21:23:17 by asibille         ###   ########.fr       */
+/*   Updated: 2022/05/10 13:01:19 by asibille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,29 +35,25 @@ static int	ft_check_undef(const char *s, size_t val, int count, int sign)
 
 int	ft_atoi(const char *s)
 {
-	int				sign;
 	size_t			val;
 	int				count;
 
-	sign = 1;
 	while (*s == ' ' || (*s >= 9 && *s <= 13))
 		++s;
-	if (*s == '+' || *s == '-')
-	{
-		if (*s == '-')
-			sign = -1;
+	if (*s == '+')
 		++s;
-	}
+	if (!(*s >= '0' && *s <= '9'))
+		return (-1);
 	val = 0;
 	count = 0;
 	while (*s >= '0' && *s <= '9' && ++count)
 	{
 		val = val * 10 + *s - '0';
 		++s;
-		if (ft_check_undef(s, val, count, sign) == -1)
+		if (ft_check_undef(s, val, count, 1) == -1)
 			return (0);
-		else if (ft_check_undef(s, val, count, sign) == 0)
+		else if (ft_check_undef(s, val, count, 1) == 0)
 			return (0);
 	}
-	return (sign * (int) val);
+	return ((int) val);
 }
