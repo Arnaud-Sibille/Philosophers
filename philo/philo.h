@@ -6,7 +6,7 @@
 /*   By: asibille <asibille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 18:14:52 by asibille          #+#    #+#             */
-/*   Updated: 2022/05/09 21:45:00 by asibille         ###   ########.fr       */
+/*   Updated: 2022/05/10 10:35:24 by asibille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <string.h>
+# include <stdatomic.h>
 
 typedef struct s_data
 {
@@ -32,15 +33,15 @@ typedef struct s_data
 	pthread_mutex_t	print_lock;
 	pthread_mutex_t	start_lock;
 	pthread_mutex_t	*eat_lock;
-	int				end;
+	atomic_int		end;
 }				t_data;
 
 typedef struct s_philo
 {
-	int		name;
-	int		ate;
-	int		last_ate;
-	t_data	*data;
+	int			name;
+	atomic_int	ate;
+	atomic_int	last_ate;
+	t_data		*data;
 }				t_philo;
 
 //init_data

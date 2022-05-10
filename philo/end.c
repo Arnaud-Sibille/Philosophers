@@ -6,7 +6,7 @@
 /*   By: asibille <asibille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 18:03:10 by asibille          #+#    #+#             */
-/*   Updated: 2022/05/09 21:41:42 by asibille         ###   ########.fr       */
+/*   Updated: 2022/05/10 10:28:31 by asibille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,9 @@ int	ft_end(t_data *data, t_philo *ph)
 		if (data->nb_eat != -1 && (ph + i)->ate >= data->nb_eat)
 			++count;
 		else
-		{
 			count = 0;
-			if ((int) ft_cur_time(data->t0) - (ph + i)->last_ate > data->t_die)
-				return (ft_exit(data, ph, i, 1));
-		}
+		if ((int) ft_cur_time(data->t0) - (ph + i)->last_ate > data->t_die)
+			return (ft_exit(data, ph, i, 1));
 		if (count == data->nb_p)
 			return (ft_exit(data, ph, i, 2));
 		i = p_ind(i, data->nb_p);
